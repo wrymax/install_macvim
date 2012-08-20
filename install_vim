@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+`tar xzvf ctags-5.8.tar.gz`
+`tar xzvf vim.tar.gz`
+`tar xzvf MacVim.tar.gz`
+`cd ctags-5.8 && sh ./configure && sudo make install && sudo ln -fs /usr/local/bin/ctags /usr/bin/ctags`
+home_dir = `cd ~ && pwd`.chomp
+Dir.exist?(home_dir + '/.vim') and `mv ~/.vim ~/.vim_backup`
+File.exist?(home_dir + '/.vimrc') and `mv ~/.vimrc ~/.vimrc_backup`
+`mv .vim ~/ && echo 'source ~/.vim/vimrc' >> ~/.vimrc`
+File.exist?('/usr/local/bin/mvim') or `cp MacVim.app/mvim /usr/local/bin/`
+Dir.exist?("/Applications/MacVim.app") or `mv MacVim.app /Applications/`
