@@ -5,7 +5,7 @@ system('ctags -R .') or `tar xzvf ctags-5.8.tar.gz && cd ctags-5.8 && sh ./confi
 `tar xzvf vim.tar.gz`
 `tar xzvf MacVim.tar.gz`
 
-home_dir = `cd ~ && pwd`.chomp
+home_dir = ENV['HOME']
 Dir.exist?(home_dir + '/.vim') and `mv ~/.vim ~/.vim_backup`
 File.exist?(home_dir + '/.vimrc') and `mv ~/.vimrc ~/.vimrc_backup`
 `mv .vim ~/ && echo 'source ~/.vim/vimrc' >> ~/.vimrc`
